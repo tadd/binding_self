@@ -1,0 +1,2 @@
+require "binding_eval_with_block/version"
+require "binding_eval_with_block/binding_eval_with_block"
