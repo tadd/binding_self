@@ -21,6 +21,8 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
+require 'binding_eval_with_block'
+
 class Foo
   def initialize(a)
     @ivar = a
