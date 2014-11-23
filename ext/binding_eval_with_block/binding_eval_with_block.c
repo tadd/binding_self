@@ -68,7 +68,7 @@ bind_eval_with_block(int argc, VALUE *argv, VALUE binding)
 	rb_check_arity(argc, 0, 0);
 	return block_eval(binding);
     } else
-	return rb_funcallv(rb_cBinding, rb_intern("eval"), argc, argv);
+	return rb_funcallv(binding, rb_intern("_eval_original"), argc, argv);
 }
 
 
