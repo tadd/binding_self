@@ -23,16 +23,13 @@ Or install it yourself as:
 ```ruby
 class Foo
   def initialize(a)
-    @a = a
+    @ivar = a
   end
 
   def binding
-    binding
+    ::Kernel.binding
   end
 end
-
-a = 1
-binding.eval { a } #=> 1
 
 foo = Foo.new(2)
 foo.binding.eval { @ivar } #=> 2
