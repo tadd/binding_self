@@ -1,13 +1,13 @@
-# Binding#eval with block
+# Binding#self
 
-Enables to write Binding#eval with block, without string-eval.
+Binding#self to extract self of the binding.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'binding_eval_with_block'
+gem 'binding_self'
 ```
 
 And then execute:
@@ -16,12 +16,12 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install binding_eval_with_block
+    $ gem install binding_self
 
 ## Usage
 
 ```ruby
-require 'binding_eval_with_block'
+require 'binding_self'
 
 class Foo
   def initialize(a)
@@ -34,14 +34,14 @@ class Foo
 end
 
 foo = Foo.new(2)
-foo.binding.eval { @ivar } #=> 2
-foo.binding.eval("@ivar") #=> 2, compatible behavior as usual
+foo.binding.self #=> ???
+foo.binding.self.instance_eval { @ivar } #=> 2
 ```
 
 
 ## Contributing
 
-1. Fork it ( https://github.com/tadd/binding_eval_with_block/fork )
+1. Fork it ( https://github.com/tadd/binding_self/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
