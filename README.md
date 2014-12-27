@@ -34,7 +34,7 @@ class Foo
 end
 
 foo = Foo.new(2)
-foo.binding.self #=> ???
+foo.binding.self #=> #<Foo:0x00000012345678 @ivar=2>
 foo.binding.self.instance_eval { @ivar } #=> 2
 ```
 
