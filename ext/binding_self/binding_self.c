@@ -1,7 +1,7 @@
-#include "binding_eval_with_block.h"
+#include "binding_self.h"
 
 /*
- * copy from vm_core.h
+ * copy from vm_core.h (2.1)
  */
 
 #define GetCoreDataFromValue(obj, type, ptr) do { \
@@ -53,28 +53,14 @@ get_self(VALUE bindingval)
 }
 
 static VALUE
-block_eval(VALUE binding)
+bind_self(VALUE binding)
 {
-    const VALUE self = get_self(binding);
-
-    return rb_obj_instance_eval(0, NULL, self);
-}
-
-
-static VALUE
-bind_eval_with_block(int argc, VALUE *argv, VALUE binding)
-{
-    if (rb_block_given_p()) {
-	rb_check_arity(argc, 0, 0);
-	return block_eval(binding);
-    } else
-	return rb_funcallv(binding, rb_intern("_eval_original"), argc, argv);
+  return get_self(binding);
 }
 
 
 void
-Init_binding_eval_with_block(void)
+Init_binding_self(void)
 {
-    rb_define_alias(rb_cBinding, "_eval_original", "eval");
-    rb_define_method(rb_cBinding, "eval", bind_eval_with_block, -1);
+    rb_define_method(rb_cBinding, "self", bind_self, 0);
 }

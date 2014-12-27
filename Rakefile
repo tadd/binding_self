@@ -9,6 +9,6 @@ task :default => :test
 
 require "rake/extensiontask"
 
-Rake::ExtensionTask.new("binding_eval_with_block") do |ext|
-  ext.lib_dir = "lib/binding_eval_with_block"
+Rake::ExtensionTask.new("binding_self") do |ext|
+  ext.lib_dir = "lib/binding_self"
 end
